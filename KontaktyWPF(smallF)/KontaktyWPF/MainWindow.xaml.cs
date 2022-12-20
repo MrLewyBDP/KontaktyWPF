@@ -10,73 +10,45 @@ namespace KontaktyWPF
     /// </summary>
     public partial class MainWindow : Window
     {
-        /// <summary>
-        /// instancja klasy modelKontakt, która obsługuje operacje na bazie danych
-        /// </summary>
         public static modelKontakt model = new modelKontakt();
-        /// <summary>
-        /// lista z danymi całego kontaktu
-        /// </summary>
-
-        public static List<Kontakt> listaKontaktow = new List<Kontakt>
-        {
-           
-        };
-        /// <summary>
-        /// lista z imieniem, nazwiskiem i numerem telefonu kontaktu (używana w datagridzie)
-        /// </summary>
-
-        public static int id = -1;
-        public static Kontakt kontakt1;
+        public static List<Kontakt> listaKontaktow = new List<Kontakt>{};
         public MainWindow()
         {
             InitializeComponent();
             DataGridList.IsReadOnly = true;
-            var newid = DataGridList.SelectedIndex;
-            id = newid;
         }
-        /// <summary>
-        /// otwarcie okna dodawania kontaktu
-        /// </summary>
         private void DodajKontakt(object sender, RoutedEventArgs e)
         {
             Window dodaj = new Dodaj(model);
             dodaj.ShowDialog();
         }
-        /// <summary>
-        /// otwarcie okna modyfikacji kontaktu
-        /// </summary>
         private void EdytujKontakt(object sender, RoutedEventArgs e)
         {
-            //var newid = DataGridList.SelectedIndex;
             if (DataGridList.SelectedItem != null)
             {
                 var kontaktDoModyfikacji = (Kontakt)DataGridList.SelectedItem;
-                var newid = kontaktDoModyfikacji.id;
-                var imieM = Convert.ToString(kontaktDoModyfikacji.imie);
-                var nazwiskoM = Convert.ToString(kontaktDoModyfikacji.nazwisko);
-                var numerM = kontaktDoModyfikacji.numer_tel;
+                var newid = kontaktDoModyfikacji.ID;
+                var imieM = Convert.ToString(kontaktDoModyfikacji.Imie);
+                var nazwiskoM = Convert.ToString(kontaktDoModyfikacji.Nazwisko);
+                var numerM = kontaktDoModyfikacji.NumerTelefonu;
                 var plecM = "Mezczyzna";
-                if (kontaktDoModyfikacji.plec == "Mezczyzna")
+                if (kontaktDoModyfikacji.Plec == "Mezczyzna")
                 {
                     plecM = "Mezczyzna";
                 }
-                if (kontaktDoModyfikacji.plec == "Kobieta")
+                if (kontaktDoModyfikacji.Plec == "Kobieta")
                 {
                     plecM = "Kobieta";
                 }
-                var wojewodztwoM = kontaktDoModyfikacji.wojewodztwo;
-                var opisM = Convert.ToString(kontaktDoModyfikacji.opis);
-                Kontakt kontakt = new Kontakt(imieM, nazwiskoM, numerM, kontaktDoModyfikacji.data_ur, wojewodztwoM, plecM, opisM, newid);
+                var wojewodztwoM = kontaktDoModyfikacji.Wojewodztwo;
+                var opisM = Convert.ToString(kontaktDoModyfikacji.Opis);
+                Kontakt kontakt = new Kontakt(imieM, nazwiskoM, numerM, kontaktDoModyfikacji.DataUrodzenia, wojewodztwoM, plecM, opisM, newid);
 
                 Window modyfikuj = new Modyfikuj(kontakt, model);
                 modyfikuj.ShowDialog();
             }
 
         }
-        /// <summary>
-        /// odświeżanie listy kontaktów (po raz pierwszy)
-        /// </summary>
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
 
@@ -84,9 +56,6 @@ namespace KontaktyWPF
             Window_Activated(null, null);
 
         }
-        /// <summary>
-        /// odświeżenie listy kontaktów oraz wyczyszczenie tekstu wyszukiwarki
-        /// </summary>
         public void Window_Activated(object sender, EventArgs e)
         {
             string imie = wysz.Text;
@@ -102,21 +71,15 @@ namespace KontaktyWPF
             DataGridList.ItemsSource = listaKontaktow;
             
         }
-        /// <summary>
-        /// usunięcie zaznaczonego kontaktu
-        /// </summary>
         private void UsunKontakt(object sender, RoutedEventArgs e)
         {
             
             if (DataGridList.SelectedItem == null) return;
             var kontakt = (Kontakt)DataGridList.SelectedItem;
-            model.Delete(kontakt.id);
+            model.Delete(kontakt.ID);
             Window_Activated(null, null);
             Wyczysc();
         }
-        /// <summary>
-        /// wyszukiwarka
-        /// </summary>
         private void Wyszukiwarka(object sender, TextChangedEventArgs e)
         {
             string fraza = wysz.Text;

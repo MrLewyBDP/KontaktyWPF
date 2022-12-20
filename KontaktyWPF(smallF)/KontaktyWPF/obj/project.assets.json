@@ -335,11 +335,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\4TP\\KontaktyWPF(smallF)\\KontaktyWPF\\KontaktyWPF.csproj",
+      "projectUniqueName": "D:\\GIT\\KontaktyWPF\\KontaktyWPF(smallF)\\KontaktyWPF\\KontaktyWPF.csproj",
       "projectName": "KontaktyWPF",
-      "projectPath": "F:\\4TP\\KontaktyWPF(smallF)\\KontaktyWPF\\KontaktyWPF.csproj",
+      "projectPath": "D:\\GIT\\KontaktyWPF\\KontaktyWPF(smallF)\\KontaktyWPF\\KontaktyWPF.csproj",
       "packagesPath": "C:\\Users\\DOM\\.nuget\\packages\\",
-      "outputPath": "F:\\4TP\\KontaktyWPF(smallF)\\KontaktyWPF\\obj\\",
+      "outputPath": "D:\\GIT\\KontaktyWPF\\KontaktyWPF(smallF)\\KontaktyWPF\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "D:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",

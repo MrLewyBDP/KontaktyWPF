@@ -28,25 +28,22 @@ namespace KontaktyWPF
             InitializeComponent();
             this.model = model;
             this.kontakt = kontakt;
-            imie.Text = kontakt.imie;
-            nazwisko.Text = kontakt.nazwisko;
-            numer.Text = kontakt.numer_tel;
-            data.Text = Convert.ToString(kontakt.data_ur);
-            if(kontakt.plec == "Mezczyzna")
+            imie.Text = kontakt.Imie;
+            nazwisko.Text = kontakt.Nazwisko;
+            numer.Text = kontakt.NumerTelefonu;
+            data.Text = Convert.ToString(kontakt.DataUrodzenia);
+            if(kontakt.Plec == "Mezczyzna")
             {
                 m1.IsChecked = true;
             }
-            else if (kontakt.plec == "Kobieta")
+            else if (kontakt.Plec == "Kobieta")
             {
                 k1.IsChecked = true;
             }
-            wojewodztwo.Text = kontakt.wojewodztwo;
-            opis.Text = kontakt.opis;
+            wojewodztwo.Text = kontakt.Wojewodztwo;
+            opis.Text = kontakt.Opis;
             this.kontakt = kontakt;
         }
-        /// <summary>
-        ///  zmodyfikowanie kontaktu
-        /// </summary>
         private void Zmodyfikuj(object sender, RoutedEventArgs e)
         {
             var plec = "";
@@ -58,23 +55,10 @@ namespace KontaktyWPF
             {
                 plec = "Kobieta";
             }
-
-
-
-            Kontakt kontaktPoEdycji = new Kontakt(imie.Text, nazwisko.Text, numer.Text, data.Text, wojewodztwo.Text, plec, opis.Text, kontakt.id);
-            //idKontaktu.imie = imie.Text;
-            //idKontaktu.nazwisko = nazwisko.Text;
-            //idKontaktu.numer_tel = numer.Text;
-            //idKontaktu.data_ur = System.Convert.ToDateTime(data.Text);
-            //idKontaktu.plec = plec;
-            //idKontaktu.wojewodztwo = wojewodztwo.Text;
-            //idKontaktu.opis = opis.Text;
+            Kontakt kontaktPoEdycji = new Kontakt(imie.Text, nazwisko.Text, numer.Text, data.Text, wojewodztwo.Text, plec, opis.Text, kontakt.ID);
             model.Modify(kontaktPoEdycji);
             this.Close();
         }
-        /// <summary>
-        /// walidacja numeru telefonu (tylko cyfry)
-        /// </summary>
         private void NumerOnly(object sender, KeyEventArgs e)
         {
             Regex wzor = new Regex(@"^D[0-9]+$");
@@ -82,9 +66,6 @@ namespace KontaktyWPF
                 return;
             e.Handled = true;
         }
-        /// <summary>
-        /// walidacja numeru telefonu (ilość cyfr)
-        /// </summary>
         private void Numerki(object sender, TextChangedEventArgs e)
         {
             if (numer.Text.Length > 9)
@@ -93,9 +74,6 @@ namespace KontaktyWPF
                 numer.CaretIndex = numer.Text.Length;
             }
         }
-        /// <summary>
-        /// walidacja daty urodzenia
-        /// </summary>
         private void Data(object sender, SelectionChangedEventArgs e)
         {
             if (data.SelectedDate > DateAndTime.Today)

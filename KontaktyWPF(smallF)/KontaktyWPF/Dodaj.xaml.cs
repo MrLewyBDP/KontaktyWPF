@@ -23,17 +23,11 @@ namespace KontaktyWPF
     public partial class Dodaj : Window
     {
         modelKontakt model;
-        /// <summary>
-        /// konstruktor okna dodawania
-        /// </summary>
         public Dodaj(modelKontakt model)
         {
             this.model = model;
             InitializeComponent();
         }
-        /// <summary>
-        /// dodanie kontaktu
-        /// </summary>
         private void kontakt(object sender, RoutedEventArgs e)
         {
             var plec = "Mezczyzna";
@@ -43,15 +37,11 @@ namespace KontaktyWPF
             }
             var dataConvert = data.DisplayDate;
             KontaktBezId kon = new KontaktBezId(imie.Text, nazwisko.Text, numer.Text, dataConvert.ToShortDateString(), wojewodztwo.Text, plec, opis.Text);
-            //MainWindow.listaKontaktow.Add(kon);
             model.Add(kon);
             this.Close();
             
 
         }
-        /// <summary>
-        /// walidacja numeru telefonu (tylko cyfry)
-        /// </summary>
         private void NumerKlik(object sender, KeyEventArgs e)
         {
             Regex wzor = new Regex(@"^D[0-9]$");
@@ -60,9 +50,6 @@ namespace KontaktyWPF
             e.Handled = true;
             
         }
-        /// <summary>
-        /// walidacja numeru telefonu (ilość cyfr)
-        /// </summary>
         private void Numerki(object sender, TextChangedEventArgs e)
         {
             if (numer.Text.Length > 9)
@@ -72,10 +59,6 @@ namespace KontaktyWPF
             }
                 
         }
-
-        /// <summary>
-        /// walidacja daty urodzenia
-        /// </summary>
         private void Data(object sender, SelectionChangedEventArgs e)
         {
             if (data.SelectedDate > DateAndTime.Today)

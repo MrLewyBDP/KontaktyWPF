@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "58T3Ekf//IBoGzGRDdAT8KAKLn3BUWQrIx01xjy5xE0fNVRUUluFdf0BOVDY55IG5dA2FzJVU8fTsxOiYhv5VQ==",
+  "dgSpecHash": "d8D28Nq59cC/UXIvSEr0LrLfQVr2qbCZbxHVyezsWjvufvfyhS/3j5foYvPpThGK1Pms2HHqoQ+gg3kdn43GhQ==",
   "success": true,
-  "projectFilePath": "F:\\4TP\\KontaktyWPF(smallF)\\KontaktyWPF\\KontaktyWPF.csproj",
+  "projectFilePath": "D:\\GIT\\KontaktyWPF\\KontaktyWPF(smallF)\\KontaktyWPF\\KontaktyWPF.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\DOM\\.nuget\\packages\\microsoft.data.sqlite\\7.0.1\\microsoft.data.sqlite.7.0.1.nupkg.sha512",
     "C:\\Users\\DOM\\.nuget\\packages\\microsoft.data.sqlite.core\\7.0.1\\microsoft.data.sqlite.core.7.0.1.nupkg.sha512",

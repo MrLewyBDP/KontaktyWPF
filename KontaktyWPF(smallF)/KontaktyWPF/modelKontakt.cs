@@ -43,7 +43,7 @@ namespace KontaktyWPF
         public void Modify(Kontakt kon)
         {
             var command = connection.CreateCommand();
-            command.CommandText = $@"UPDATE {tabelkaNazwa} SET Imie = '{kon.imie}', Nazwisko ='{kon.nazwisko}' , NumerTelefonu = {kon.numer_tel}, DataUrodzenia = '{kon.data_ur}', Wojewodztwo = '{kon.wojewodztwo}',Plec = '{kon.plec}', Opis = '{kon.opis}' WHERE Id = {kon.id}";
+            command.CommandText = $@"UPDATE {tabelkaNazwa} SET Imie = '{kon.Imie}', Nazwisko ='{kon.Nazwisko}' , NumerTelefonu = {kon.NumerTelefonu}, DataUrodzenia = '{kon.DataUrodzenia}', Wojewodztwo = '{kon.Wojewodztwo}',Plec = '{kon.Plec}', Opis = '{kon.Opis}' WHERE Id = {kon.ID}";
             command.ExecuteNonQuery();
         }
         public void Delete(int id)
